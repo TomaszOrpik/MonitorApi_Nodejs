@@ -2,15 +2,14 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
-const corsOptions = {
-    origin: "http://localhost:8081", //??? for angular
-    originStatus: 200
-}
+// const corsOptions = {
+//     origin: "http://localhost:4200", //??? for angular
+//     originStatus: 200
+// }
+//Add vegeshop //deploy //documentation
 
 const app = express();
-app.use(cors(//here to add cors options
-    //corsOptions
-    ));
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded( { extended: true }));
 
@@ -51,8 +50,6 @@ app.get("/users", usersController.getAllUsers);
 app.get("/users/:id", usersController.getUser);
 app.get("/users_average", usersController.getAllAverage);
 app.get("/users_average/:id", usersController.getUserAverage);
-//after run test and deploy to server + add to git + add documentation
-
 
 const port = process.env.PORT || 8080;
 const server = app.listen(port, () =>
