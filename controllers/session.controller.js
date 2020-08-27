@@ -6,7 +6,8 @@ exports.insertSession = (req, res) => {
         db.mongoose.connection.db.collection('sessions', (err, subCollection) => {
             subCollection.findOne( { userIp: session.userIp }, (err, subSession) => {
                 let userId;
-                if (subSession.userId == null) userId = '_' + Math.random().toString(36).substr(2, 9);
+                console.log(subSession == null);
+                if (subSession == null) userId = '_' + Math.random().toString(36).substr(2, 9);
                 else userId = subSession.userId;
                 db.mongoose.connection.db.collection('sessions', (err, secondSubCollection) => {
                     secondSubCollection.find( { userIp: session.userIp }).toArray((err, subSessions) => {
