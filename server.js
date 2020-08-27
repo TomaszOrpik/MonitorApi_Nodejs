@@ -32,6 +32,8 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded( { extended: true }));
 
+app.options("/sessions", cors());
+
 const db = require('./models');
 db.mongoose
 .connect(db.url, {
@@ -49,7 +51,7 @@ db.mongoose
 })
 
 const sessionController = require('./controllers/session.controller');
-app.post("/sessions", sessionController.insertSession);
+app.post("/sessions", cors(), sessionController.insertSession);
 app.get("/sessions", sessionController.getAllSessions);
 app.get("/sessions/:id", sessionController.getSingleSession);
 app.get("/sessions_user/:id", sessionController.getAllUsersSessions);
