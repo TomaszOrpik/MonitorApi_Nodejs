@@ -48,8 +48,10 @@ db.mongoose
     process.exit();
 })
 
+app.options("/sessions", cors());
+
 const sessionController = require('./controllers/session.controller');
-app.post("/sessions", sessionController.insertSession);
+app.post("/sessions", cors(), sessionController.insertSession);
 app.get("/sessions", sessionController.getAllSessions);
 app.get("/sessions/:id", sessionController.getSingleSession);
 app.get("/sessions_user/:id", sessionController.getAllUsersSessions);
