@@ -49,27 +49,40 @@ db.mongoose
 })
 
 app.options("/sessions", cors());
+app.options("/sessions/:id", cors());
+app.options("/sessions_user/:id", cors());
+app.options("/sessions_logged/:id", cors());
+app.options("/sessions_contacted/:id", cors());
+app.options("/sessions_pages/:id", cors());
+app.options("/sessions_cartItems/:id", cors());
+app.options("/sessions_buyedItems/:id", cors());
+app.options("/sessions_scrap/:id", cors());
+
+app.options("/users", cors());
+app.options("/users/:id", cors());
+app.options("/users_average", cors());
+app.options("/users_average/:id", cors());
 
 const sessionController = require('./controllers/session.controller');
 app.post("/sessions", cors(), sessionController.insertSession);
-app.get("/sessions", sessionController.getAllSessions);
-app.get("/sessions/:id", sessionController.getSingleSession);
-app.get("/sessions_user/:id", sessionController.getAllUsersSessions);
+app.get("/sessions", cors(), sessionController.getAllSessions);
+app.get("/sessions/:id", cors(), sessionController.getSingleSession);
+app.get("/sessions_user/:id", cors(), sessionController.getAllUsersSessions);
 app.patch("/sessions/:id", sessionController.updateSession);
-app.patch("/sessions_logged/:id", sessionController.updateSessionLogged);
-app.patch("/sessions_contacted/:id", sessionController.updateSessionContacted);
-app.put("/sessions_pages/:id", sessionController.addSessionPages);
-app.put("/sessions_cartItems/:id", sessionController.addSessionCartItems);
-app.put("/sessions_buyedItems/:id", sessionController.addSessionBuyedItem);
-app.put("/sessions_scrap/:id", sessionController.addSessionScrap);
-app.delete("/sessions/:id", sessionController.deleteSession);
+app.patch("/sessions_logged/:id", cors(), sessionController.updateSessionLogged);
+app.patch("/sessions_contacted/:id", cros(), sessionController.updateSessionContacted);
+app.put("/sessions_pages/:id", cors(), sessionController.addSessionPages);
+app.put("/sessions_cartItems/:id", cors(), sessionController.addSessionCartItems);
+app.put("/sessions_buyedItems/:id", cors(), sessionController.addSessionBuyedItem);
+app.put("/sessions_scrap/:id", cors(), sessionController.addSessionScrap);
+app.delete("/sessions/:id", cors(), sessionController.deleteSession);
 app.delete("/sessions", sessionController.deleteAllSessions);
 
 const usersController = require('./controllers/user.controller');
-app.get("/users", usersController.getAllUsers);
-app.get("/users/:id", usersController.getUser);
-app.get("/users_average", usersController.getAllAverage);
-app.get("/users_average/:id", usersController.getUserAverage);
+app.get("/users", cors(), usersController.getAllUsers);
+app.get("/users/:id", cors(), usersController.getUser);
+app.get("/users_average", cors(), usersController.getAllAverage);
+app.get("/users_average/:id", cors(), usersController.getUserAverage);
 
 const port = process.env.PORT || 8080;
 const server = app.listen(port, () =>
