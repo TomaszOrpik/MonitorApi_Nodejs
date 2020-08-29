@@ -29,7 +29,7 @@ Lista odnośników API:
 | Put `/sessions_pages/:id` | Id sesji, Page name, Time spend on page(sekundy) | Dodaje dane strony na której był użytkownik do sesji o podanym id |
 | Put `/sessions_cartItems/:id` | Id sesji, Item name, Action on item | Dodaje dane interakcji z koszykiem do sesji o podanym id |
 | Put `/sessions_buyedItems/:id` | Id sesji, Item name, Item quantity | Dodaje dane koszyka do sesji o podanym id |
-| Put `/sessions_scrap/:id` | id sesji, Mouse X, Mouse Y, Window Width, Window Heigth, ScrollTopPosition, Current Page, Clicked Item Id | Dodaje dane aktualnej aktywności użytkownika na stronie |
+| Put `/sessions_scrap/:id` | id sesji, Mouse X, Mouse Y, Window Width, Window Heigth, ScrollTopPosition, Current Page, Clicked Item Id, Input Id, Input Key | Dodaje dane aktualnej aktywności użytkownika na stronie |
 | Patch `/sessions_logged/:id` | Id sesji, Did logged? | Zmienia status zmiennej DidLogged w sesji o podanym id |
 | Patch `/sessions_contacted/:id` | Id sesji, Did contacted? | Zmienia status zmiennej DidContacted w sesji o podanym id |
 | Delete `/sessions/:id` | Id sesji | Usuwa z bazy danych sesję o podanym id |
