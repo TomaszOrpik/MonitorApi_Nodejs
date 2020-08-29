@@ -59,7 +59,7 @@ const usersController = require('./controllers/user.controller');
 app.get("/users", cors(), usersController.getAllUsers);
 app.get("/users/:id", cors(), usersController.getUser);
 app.get("/users_average", cors(), usersController.getAllAverage);
-app.get("/users_average/:id", cors(), usersController.getUserAverage);
+app.get("/users_average/:id", cors(), usersController.getUserAverage); //check
 
 const port = process.env.PORT || 8080;
 const server = app.listen(port, () =>
