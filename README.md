@@ -30,7 +30,7 @@ List of API routes:
 | Put `/sessions_pages/:id` | Session id, Page name, Time spend on page(sec) | Puts data of visited page into session with selected id |
 | Put `/sessions_cartItems/:id` | Session id, Item name, Action on item | Puts into database data of cart interaction of session with selected id |
 | Put `/sessions_buyedItems/:id` | Session id, Item name, Item quantity | Puts data of buyed items with quantity of them into session with selected id |
-| Put `/sessions_scrap/:id` | Session id, Mouse X, Mouse Y, Window Width, Window Heigth, ScrollTopPosition, Current Page, Clicked Item Id | Puts data of current user activity on page |
+| Put `/sessions_scrap/:id` | Session id, Mouse X, Mouse Y, Window Width, Window Heigth, ScrollTopPosition, Current Page, Clicked Item Id, Input Id, Input Key | Puts data of current user activity on page |
 | Patch `/sessions_logged/:id` | Session id, Did logged? | Change status of logged bool for session with selected id |
 | Patch `/sessions_contacted/:id` | Session id, Did contacted? | Change status of contacted bool for session with selected id |
 | Delete `/sessions/:id` | Session id | Delete session with selected id from database |
