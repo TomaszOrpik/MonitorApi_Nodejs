@@ -379,6 +379,14 @@ exports.addSessionScrap = (req, res) => {
         res.status(400);
         res.json('Clicked Item Id incorrect format');
     };
+    if (typeof req.body.inputId !== 'string') {
+        res.status(400);
+        res.json('Input Id incorrect format')
+    };
+    if (typeof req.body.inputKey !== 'string') {
+        res.status(400);
+        res.json('Input Key incorrect format');
+    }
     db.mongoose.connection.db.collection('sessions', (err, collection) => {
         collection.findOneAndUpdate( { sessionId: req.params.id }, { $push: { sessionScrap: req.body } }, (err, result) => {
             if(result.value === null) {

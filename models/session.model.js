@@ -42,7 +42,9 @@ module.exports = mongoose => {
                         scrollTopPosition: Number,
                         mouseX: Number,
                         mouseY: Number,
-                        clickedItemId: String
+                        clickedItemId: String,
+                        inputId: String,
+                        inputKey: String
                     }
                 ]
             }
