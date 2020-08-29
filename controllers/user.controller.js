@@ -71,7 +71,7 @@ exports.getAllUsers = async (req, res) => {
                     cartItems: cartItems,
                     buyedItems: buyedItems
                 });
-            }, 3000);
+            }, 5000);
         });
     });
 };
