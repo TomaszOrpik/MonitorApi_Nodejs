@@ -47,7 +47,7 @@ app.get("/sessions/:id", cors(), sessionController.getSingleSession);
 app.get("/sessions_user/:id", cors(), sessionController.getAllUsersSessions);
 app.patch("/sessions/:id", sessionController.updateSession);
 app.patch("/sessions_logged/:id", cors(), sessionController.updateSessionLogged);
-app.patch("/sessions_contacted/:id", cros(), sessionController.updateSessionContacted);
+app.patch("/sessions_contacted/:id", cors(), sessionController.updateSessionContacted);
 app.put("/sessions_pages/:id", cors(), sessionController.addSessionPages);
 app.put("/sessions_cartItems/:id", cors(), sessionController.addSessionCartItems);
 app.put("/sessions_buyedItems/:id", cors(), sessionController.addSessionBuyedItem);
