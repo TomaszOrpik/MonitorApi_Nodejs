@@ -280,9 +280,9 @@ exports.addSessionCartItems = (req, res) => {
         res.status(400);
         res.json('Bad item action format');
     }
-    if (req.body.itemAction !== 'Add' && req.body.itemAction !== 'Remove') {
+    if (req.body.itemAction !== 'Dodaj' && req.body.itemAction !== 'Usuń') {
         res.status(400);
-        res.json('Item action must be Add or Remove');
+        res.json('Item action must be "Dodaj" or "Usuń');
     }
     if (typeof req.body.itemName !== 'string') {
         res.status(400);
