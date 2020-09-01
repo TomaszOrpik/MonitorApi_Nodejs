@@ -355,10 +355,10 @@ exports.addSessionScrap = (req, res) => {
         res.status(400);
         res.json('Window width incorrect format');
     }
-    if (typeof req.body.windowHeigth !== 'number') {
-        res.status(400);
-        res.json('Window height incorrect format');
-    }
+    // if (typeof req.body.windowHeigth !== 'number') {
+    //     res.status(400);
+    //     res.json('Window height incorrect format');
+    // }
     if (typeof req.body.currentPage !== 'string') {
         res.status(400);
         res.json('Incorrect current page format');
