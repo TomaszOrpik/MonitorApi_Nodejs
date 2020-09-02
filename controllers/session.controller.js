@@ -331,40 +331,73 @@ exports.addSessionBuyedItem = (req, res) => {
 };
 
 exports.addSessionScrap = (req, res) => {
-    const sessions = req.body;
-    sessions.forEach(session => {
-        if (session.mouseX < 0) {
-            res.status(400);
-            res.json('Mouse position cant be negative');
-        }
-        if (session.mouseY < 0) {
-            res.status(400);
-            res.json('Mouse position cant be negative');
-        }
-        if (session.windowWidth <= 0) {
-            res.status(400);
-            res.json('Window width must be higher than 0');
-        }
-        if (session.windowHeigth <= 0) {
-            res.status(400);
-            res.json('Window height must be higher than 0');
-        }
-        if (session.scrollTopPosition < 0) {
-            res.status(400);
-            res.json('Scroll position cant be negative');
-        }
-        db.mongoose.connection.db.collection('sessions', (err, collection) => {
-            collection.findOneAndUpdate( { sessionId: req.params.id }, { $push: { sessionScrap: session } }, (err, result) => {
-                if(result.value === null) {
-                    res.status(404);
-                    res.json('Session Id not found');
-                }
-            })
+    if (req.body.mouseX < 0) {
+        res.status(400);
+        res.json('Mouse position cant be negative');
+    }
+    if (req.body.mouseY < 0) {
+        res.status(400);
+        res.json('Mouse position cant be negative');
+    }
+    if (req.body.windowWidth <= 0) {
+        res.status(400);
+        res.json('Window width must be higher than 0');
+    }
+    if (req.body.windowHeigth <= 0) {
+        res.status(400);
+        res.json('Window height must be higher than 0');
+    }
+    if (req.body.scrollTopPosition < 0) {
+        res.status(400);
+        res.json('Scroll position cant be negative');
+    }
+    // if (typeof req.body.windowWidth !== 'number') {
+    //     res.status(400);
+    //     res.json('Window width incorrect format');
+    // }
+    // if (typeof req.body.windowHeigth !== 'number') {
+    //     res.status(400);
+    //     res.json('Window height incorrect format');
+    // }
+    // if (typeof req.body.currentPage !== 'string') {
+    //     res.status(400);
+    //     res.json('Incorrect current page format');
+    // }
+    // if (typeof req.body.scrollTopPosition !== 'number') {
+    //     res.status(400);
+    //     res.json('Incorrect scroll top position format');
+    // }
+    // if (typeof req.body.mouseX !== 'number') {
+    //     res.status(400);
+    //     res.json('Mouse X position incorrect format');
+    // }
+    // if (typeof req.body.mouseY !== 'number') {
+    //     res.status(400);
+    //     res.json('Mouse Y position incorrect format');
+    // }
+    // if (typeof req.body.clickedItemId !== 'string') {
+    //     res.status(400);
+    //     res.json('Clicked Item Id incorrect format');
+    // };
+    // if (typeof req.body.inputId !== 'string') {
+    //     res.status(400);
+    //     res.json('Input Id incorrect format')
+    // };
+    // if (typeof req.body.inputKey !== 'string') {
+    //     res.status(400);
+    //     res.json('Input Key incorrect format');
+    // }
+    db.mongoose.connection.db.collection('sessions', (err, collection) => {
+        collection.findOneAndUpdate( { sessionId: req.params.id }, { $push: { sessionScrap: req.body } }, (err, result) => {
+            if(result.value === null) {
+                res.status(404);
+                res.json('Session Id not found');
+            } else {
+                res.status(200);
+                res.json('Session Scrap added');
+            }
         })
-    });
-    res.status(200);
-    res.json('Session scraps added');
-
+    })
 };
 
 exports.updateSessionLogged = (req, res) => {
