@@ -26,19 +26,19 @@ db.mongoose
 })
 
 app.options("*", cors());
-// app.options("/sessions/:id", cors());
-// app.options("/sessions_user/:id", cors());
-// app.options("/sessions_logged/:id", cors());
-// app.options("/sessions_contacted/:id", cors());
-// app.options("/sessions_pages/:id", cors());
-// app.options("/sessions_cartItems/:id", cors());
-// app.options("/sessions_buyedItems/:id", cors());
-// app.options("/sessions_scrap/:id", cors());
+app.options("/sessions/:id", cors());
+app.options("/sessions_user/:id", cors());
+app.options("/sessions_logged/:id", cors());
+app.options("/sessions_contacted/:id", cors());
+app.options("/sessions_pages/:id", cors());
+app.options("/sessions_cartItems/:id", cors());
+app.options("/sessions_buyedItems/:id", cors());
+app.options("/sessions_scrap/:id", cors());
 
-// app.options("/users", cors());
-// app.options("/users/:id", cors());
-// app.options("/users_average", cors());
-// app.options("/users_average/:id", cors());
+app.options("/users", cors());
+app.options("/users/:id", cors());
+app.options("/users_average", cors());
+app.options("/users_average/:id", cors());
 
 const sessionController = require('./controllers/session.controller');
 app.post("/sessions", cors(), sessionController.insertSession);
