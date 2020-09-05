@@ -191,7 +191,7 @@ exports.getAllAverage = (req, res) => {
             userList.map(userId => {
                 db.mongoose.connection.db.collection('sessions', (err, collection) => {
                     collection.find( { userId: userId }).toArray((err, sessions) => {
-                    sessions.forEach((ss) => {
+                    for (let i = 0; i < sessions.length; i++) {
                         if(ss.userIp !== undefined && ss.userIp !== null)
                             ips.push(ss.userIp);
                         if(ss.device !== undefined && ss.device !== null)
@@ -223,7 +223,7 @@ exports.getAllAverage = (req, res) => {
                         }
                         if(ss.didLogged !== undefined && ss.didLogged !== null)
                             loggeds.push(ss.didLogged);
-                        });
+                    }
                         if(devices >= 1)
                             mostUsedDevices.push(getMostPopular(devices));
                         if(browsers >= 1)
