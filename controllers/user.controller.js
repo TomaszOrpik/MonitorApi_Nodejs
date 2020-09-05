@@ -191,7 +191,7 @@ exports.getAllAverage = (req, res) => {
             userList.map(userId => {
                 db.mongoose.connection.db.collection('sessions', (err, collection) => {
                     collection.find( { userId: userId }).toArray((err, sessions) => {
-                    sessions.map((ss) => {
+                    sessions.forEach((ss) => {
                         if(ss.userIp !== undefined && ss.userIp !== null)
                             ips.push(ss.userIp);
                         if(ss.device !== undefined && ss.device !== null)
@@ -214,8 +214,8 @@ exports.getAllAverage = (req, res) => {
                                     buyedItemsCount.push(buyedItem.itemQuantity);
                             });
                         }
-                        if(ss.carItems !== null && ss.carItems !== undefined) {
-                            ss.carItems.forEach(cartItem => {
+                        if(ss.cartItems !== null && ss.cartItems !== undefined) {
+                            ss.cartItems.forEach(cartItem => {
                                 if(cartItem !== null && cartItem !== undefined) {
                                     cartActions.push(cartItem.itemAction)
                                 }
@@ -223,7 +223,7 @@ exports.getAllAverage = (req, res) => {
                         }
                         if(ss.didLogged !== undefined && ss.didLogged !== null)
                             loggeds.push(ss.didLogged);
-                        });
+                    });
                         if(devices >= 1)
                             mostUsedDevices.push(getMostPopular(devices));
                         if(browsers >= 1)
@@ -240,22 +240,21 @@ exports.getAllAverage = (req, res) => {
                             averageItemBuys.push(getAverage(buyedItemsCount));
                         if(loggeds >= 1)
                             mostlyLogged.push(getMostPopularBool(loggeds));
+
+                        res.status(200);
+                        res.json(getMostOfAverage(
+                            devices,
+                            browsers,
+                            locations,
+                            reffers,
+                            timeOnPages,
+                            cartActions,
+                            buyedItemsCount,
+                            loggeds
+                        ));
                     });
                 });
             })
-            setTimeout(() => {
-                res.status(200);
-                res.json(getMostOfAverage(
-                    mostUsedDevices,
-                    mostUsedBrowsers,
-                    mostPopularLocations,
-                    mostPopularReffers,
-                    averageTimeOnPages,
-                    averageCartActions,
-                    averageItemBuys,
-                    mostlyLogged
-                ))
-            }, 3000);
         });
     });
 };
@@ -304,8 +303,8 @@ exports.getUserAverage = (req, res) => {
                                     buyedItemsCount.push(buyedItem.itemQuantity);
                             });
                         }
-                        if(ss.carItems !== null && ss.carItems !== undefined) {
-                            ss.carItems.forEach(cartItem => {
+                        if(ss.cartItems !== null && ss.cartItems !== undefined) {
+                            ss.cartItems.forEach(cartItem => {
                                 if(cartItem !== null && cartItem !== undefined) {
                                     cartActions.push(cartItem.itemAction)
                                 }
