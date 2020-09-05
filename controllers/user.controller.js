@@ -191,7 +191,7 @@ exports.getAllAverage = (req, res) => {
             userList.map(userId => {
                 db.mongoose.connection.db.collection('sessions', (err, collection) => {
                     collection.find( { userId: userId }).toArray((err, sessions) => {
-                    sessions.forEach((ss) => {
+                    sessions.map((ss) => {
                         if(ss.userIp !== undefined && ss.userIp !== null)
                             ips.push(ss.userIp);
                         if(ss.device !== undefined && ss.device !== null)
