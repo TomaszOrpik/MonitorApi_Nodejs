@@ -20,8 +20,8 @@ List of API routes:
 |:--------------|:--------------------|:-------------|
 | Get `/users` | None | Returns from database full data of all users and all sessions of them |
 | Get `/users/:id` | User id | Returns from database data of all sessions of selected user as one Json object|
-| Get `/users/all/average` | None | Returns from database average data of all sessions |
-| Get `/users/average/:id` | User id | Returns from database average data of sessions of the user with selected id |
+| Get `/users_average` | None | Returns from database average data of all sessions |
+| Get `/users_average/:id` | User id | Returns from database average data of sessions of the user with selected id |
 | Post `/sessions` | User id, User ip, Date of visit, Device, Browser, Location, reffer | Post into database the information about new session |
 | Get `/sessions` | None | Returns the full data of sessions on website |
 | Get `/sessions/:id` | Sesson id | Returns the data of session with selected id |
