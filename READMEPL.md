@@ -19,8 +19,8 @@ Lista odnośników API:
 |:--------------|:--------------------|:-------------|
 | Get `/users` | Brak | Zwraca z bazy danych informacje o wszystkich użytkownikach oraz ich aktywności |
 | Get `/users/:id` | Id użytkownika | Zwraca z bazy danych informacje o wszystkich sesjach użytkownika w formie obiektu JSON|
-| Get `/users/all/average` | Brak | Zwraca z bazy danych średnią z aktywności wszystkich użytkowników |
-| Get `/users/average/:id` | Id użytkownika | Zwraca z bazy danych średnią z aktywności użytkownika |
+| Get `/users_average` | Brak | Zwraca z bazy danych średnią z aktywności wszystkich użytkowników |
+| Get `/users_average/:id` | Id użytkownika | Zwraca z bazy danych średnią z aktywności użytkownika |
 | Post `/sessions` | User id, User ip, Date of visit, Device, Browser, Location, reffer | Przekazuje do bazy danych informacje o nowej sesji |
 | Get `/sessions` | Brak | Zwraca informację o wszystkich sesjach na stronie |
 | Get `/sessions/:id` | Id sesji | Zwraca informacje o sesji z wybranym id |
