@@ -4,7 +4,7 @@ For polish version [click here](https://github.com/TomaszOrpik/MonitorApi_Nodejs
 Monitor Api rewritten to node + express js
 
 # Introduction
-It was created to track users activity of [Vegetarian Shop](https://vegeshop-714fb.firebaseapp.com/). Api collects such information about user as location, track users cart, device and much more into mongoDB database. Such data can be easy access in formatted form, as users data, average data for user, or global values in total and average form. It is easy to implement with different shops, so users data can be displayed with applications, that can't read it from google analytics.
+It was created to track users activity of [Vegetarian Shop](https://vegeshop-714fb.firebaseapp.com/). Api collects such information about user as location, track users cart, device and much more into mongoDB database. Such data can be easy access in formatted form, as users data, average data for user, or global values in total and average form. It is easy to implement with different shops, so users data can be displayed with applications, that can't read it from google analytics as [Xamarin App](https://github.com/TomaszOrpik/VeganFoodShopMonitorApp).
 
 # Setup
 To make api work:
